@@ -1,0 +1,68 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MedicalCabinet.UI.CustomControls">
+
+
+    <Style TargetType="{x:Type local:CrossButton}">
+        <Style.Resources>
+            <!-- Brushes we use for the control. -->
+
+            <SolidColorBrush x:Key="NormalBackgroundBrush" Color="#00000000" />
+            <SolidColorBrush x:Key="NormalBorderBrush" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="NormalForegroundBrush" Color="#FF8f949b" />
+
+            <SolidColorBrush x:Key="HoverForegroundBrush" Color="Black" />
+
+            <SolidColorBrush x:Key="PressedForegroundBrush" Color="#FF7B7676" />
+
+        </Style.Resources>
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="Transparent">
+                        <!-- A path that renders a cross. -->
+                        <Path x:Name="ButtonPath"
+                              Margin="3"
+                              Stroke="{StaticResource NormalForegroundBrush}"
+                              StrokeThickness="1.5"
+                              StrokeStartLineCap="Square"
+                              StrokeEndLineCap="Square"
+                              Stretch="Uniform"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <PathFigure StartPoint="0,0">
+                                            <LineSegment Point="25,25"/>
+                                        </PathFigure>
+                                        <PathFigure StartPoint="0,25">
+                                            <LineSegment Point="25,0"/>
+                                        </PathFigure>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonPath" Property="StrokeThickness" Value="2"/>
+                            <Setter TargetName="ButtonPath" Property="Stroke" 
+                                Value="{StaticResource HoverForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonPath" Property="Stroke" 
+                                    Value="{StaticResource PressedForegroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

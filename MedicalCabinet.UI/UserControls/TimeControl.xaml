@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="MedicalCabinet.UI.UserControls.TimeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MedicalCabinet.UI.UserControls"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto" x:Name="UserControl">
+    <Grid x:Name="LayoutRoot" Width="Auto" Height="Auto">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="0.2*"/>
+
+            <ColumnDefinition Width="0.05*"/>
+
+            <ColumnDefinition Width="0.2*"/>
+
+            <ColumnDefinition Width="0.05*"/>
+
+            <ColumnDefinition Width="0.2*"/>
+
+        </Grid.ColumnDefinitions>
+            <!---->
+        <Grid x:Name="hour" Focusable="True">
+            <ComboBox x:Name="mmTxt" Text="{Binding Path=Hours, ElementName=UserControl, Mode=Default}"  VerticalAlignment="Center" FontSize="24" HorizontalContentAlignment="Center" Style="{StaticResource DefaultComboBoxStyle}" Height="60" />
+        </Grid>
+        <Grid  Grid.Column="1">
+            <TextBlock  x:Name="sep1" TextWrapping="Wrap" VerticalAlignment="Center" Background="{x:Null}" Style="{StaticResource TextBlockStyle}"  Text=":" TextAlignment="Center"/>
+        </Grid>
+
+        <Grid  Grid.Column="2" x:Name="min" Focusable="True" >
+            <ComboBox  x:Name="ddTxt"  Text="{Binding Path=Minutes, ElementName=UserControl, Mode=Default}" VerticalAlignment="Center" FontSize="24" HorizontalContentAlignment="Center" Style="{StaticResource DefaultComboBoxStyle}" Height="60"/>
+        </Grid>
+
+        <Grid  Grid.Column="3">
+            <TextBlock x:Name="sep2"  TextWrapping="Wrap" VerticalAlignment="Center" Background="{x:Null}" Style="{StaticResource TextBlockStyle}" Text=":" TextAlignment="Center"/>
+        </Grid>
+
+        <Grid  Grid.Column="4" Name="sec" Focusable="True">
+            <ComboBox x:Name="yyTxt"  Text="{Binding Path=Seconds, ElementName=UserControl, Mode=Default}"  VerticalAlignment="Center" FontSize="24" HorizontalContentAlignment="Center" Style="{StaticResource DefaultComboBoxStyle}" Height="60"/>
+        </Grid>
+    </Grid>
+</UserControl>

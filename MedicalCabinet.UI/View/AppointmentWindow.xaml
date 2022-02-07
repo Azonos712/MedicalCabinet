@@ -1,0 +1,48 @@
+﻿<Window x:Class="MedicalCabinet.UI.View.AppointmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedicalCabinet.UI.View" xmlns:ctrl="clr-namespace:MedicalCabinet.UI.UserControls"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyle}" WindowStartupLocation="CenterScreen" Title="MEDDOC" Height="700" Width="500">
+    <Border BorderBrush="#FFE2E2E2" BorderThickness="1">
+
+        <Grid>
+            <Grid x:Name="BackgroundGrid" Visibility="Collapsed" Background="#70000000" 
+                  Grid.RowSpan="10" Grid.ColumnSpan="10" Panel.ZIndex="10"/>
+            <StackPanel Margin="12">
+                <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="18" Text="Случай болезни" Margin="5"></TextBlock>
+                <Viewbox Margin="5">
+                    <ComboBox x:Name="PatientCB" Style="{DynamicResource DefaultComboBoxStyle}" SelectedItem="{Binding CaseOfIllness}" Height="50" Width="400"></ComboBox>
+                </Viewbox>
+
+                <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="18" Text="Дата" Margin="5"></TextBlock>
+                
+                <Viewbox Margin="5">
+                    <DatePicker CalendarStyle="{DynamicResource DefaultCalendarStyle}" 
+                                Style="{DynamicResource DefaultDatePickerStyle}" 
+                                Height="50" Width="400" SelectedDate="{Binding Date, StringFormat=dd.MM.yyyy}">
+                    </DatePicker>
+                </Viewbox>
+
+                <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="18" Text="Время" Margin="5"></TextBlock>
+                <!--<Viewbox Margin="3">-->
+                    <!--TODO DATETIMEPICKER-->
+                <ctrl:TimeControl Margin="5" Hours="{Binding Time.Hour}" Minutes="{Binding Time.Minute}" Seconds="{Binding Time.Second}" x:Name="TimeControl"/>
+                <!--</Viewbox>-->
+
+                <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="18" Text="Дополнительноее описание" Margin="5"></TextBlock>
+                <Viewbox Margin="5">
+                    <TextBox Style="{StaticResource TextBoxStyle}" Width="400" Height="160" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Description}"
+                             Padding="28 20 28 20"></TextBox>
+                </Viewbox>
+
+                <Button x:Name="ActionBtn" Style="{StaticResource BlueWhiteButtonStyle}" Width="Auto"
+                            Margin="5"  Content="Добавить/Изменить" Click="ActionBtn_Click"></Button>
+                <Button x:Name="BackBtn" Style="{StaticResource WhiteBlueButtonStyle}" BorderBrush="Red" Foreground="Red" Width="Auto"
+                            Margin="5" BorderThickness="2" Content="Отмена" Click="BackBtn_Click" Cursor="Hand"></Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="MedicalCabinet.UI.UserControls.NoteCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MedicalCabinet.UI.UserControls"
+             mc:Ignorable="d">
+    <Border Background="{DynamicResource PrimaryBrush}" Width="200" Margin="7" CornerRadius="13">
+        <StackPanel>
+            <WrapPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Title}"
+                       Foreground="#FFFFFFFF" Margin="10 10 0 5" FontSize="20" Width="160"></TextBlock>
+                <Button Style="{StaticResource IconButtonStyle}" Background="Transparent" Cursor="Hand" 
+                        VerticalAlignment="Top" Click="Button_Click" Width="25" Height="25" Margin="3 2 0 0">
+                    <Image Stretch="Fill" Source="/Images/Icon/delete_cross.png"></Image>
+                </Button>
+            </WrapPanel>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding DateOfCreation, StringFormat=dd.MM.yyyy}" 
+                       Foreground="#FFFFFFFF" Margin="10 5 10 5" FontSize="13"></TextBlock>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Description}" 
+                       Foreground="#FFFFFFFF" FontWeight="Normal" Margin="10 5 10 10" FontSize="13"></TextBlock>
+        </StackPanel>
+    </Border>
+</UserControl>

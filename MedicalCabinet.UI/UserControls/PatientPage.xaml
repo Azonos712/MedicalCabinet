@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="MedicalCabinet.UI.UserControls.PatientPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MedicalCabinet.UI.UserControls" 
+             xmlns:libmod="clr-namespace:MedicalCabinet.Library.Model;assembly=MedicalCabinet.Library"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="900">
+    <Grid>
+        <Border BorderBrush="#FFE2E2E2" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Мои пациенты" Style="{StaticResource TextBlockStyle}" Margin="25 25 25 0"></TextBlock>
+                <DataGrid x:Name="patientDataGrid" ColumnHeaderStyle="{DynamicResource DefaultColumnHeaderStyle}" 
+                          CellStyle="{DynamicResource DefaultCellStyle}"
+                          Style="{DynamicResource DefaultDataGridStyle}" 
+                          IsReadOnly="True" CanUserAddRows="False" 
+                          CanUserResizeRows="False" CanUserResizeColumns="False" AutoGenerateColumns="False" 
+                          Margin="25 20 25 10" Height="480">
+                    <!--<DataGrid.Items>
+                        <libmod:Patient BirthDay="11.11.95" FirstName="Николай" LastName="Николаев" MiddleName="Николаевич"  />
+                        <libmod:Patient BirthDay="11.11.95" FirstName="Николай" LastName="Николаев" MiddleName="Николаевич"  />
+                        <libmod:Patient BirthDay="11.11.95" FirstName="Василий" LastName="Николаев" MiddleName="Николаевич"  />
+                        <libmod:Patient BirthDay="01.05.95" FirstName="Кирилл" LastName="Николаев" MiddleName="Николаевич"  />
+                        <libmod:Patient BirthDay="11.11.95" FirstName="Николай" LastName="Николаев" MiddleName="Николаевич"  />
+                    </DataGrid.Items>-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ф.И.О." Width="*" Binding="{Binding Patient.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Диагноз" Width="*" Binding="{Binding Diagnosis}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Дата рождения" Width="Auto"  Binding="{Binding Patient.BirthDay, StringFormat=dd.MM.yyyy}"></DataGridTextColumn>
+                        <DataGridTemplateColumn Header="Действия" Width="Auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="EditInGridBtn" 
+                                                Style="{StaticResource IconButtonStyle}" 
+                                                Background="#ff1675e4" 
+                                                Cursor="Hand" 
+                                                Click="EditInGridBtn_Click" >
+                                            <Image Stretch="Fill" Width="17" Height="17" Source="/Images/Icon/edit.png"></Image>
+                                        </Button>
+                                        <Button x:Name="DeleteInGridBtn" 
+                                                Style="{StaticResource IconButtonStyle}" 
+                                                Background="#ffe82833"
+                                                Margin="7 0 0 0" 
+                                                Click="DeleteInGridBtn_Click">
+                                            <Image Stretch="Fill" Width="14" Height="14" Source="/Images/Icon/delete.png"></Image>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="AddNewPatientBtn" Style="{StaticResource BlueWhiteButtonStyle}" 
+                        Content="Новый пациент" HorizontalAlignment="Right" 
+                        Width="320" Margin="0 0 25 0" Cursor="Hand"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

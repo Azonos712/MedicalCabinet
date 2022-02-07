@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <ApplicationIcon>Images\Icon\signofhealth_medical_10742.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Backgrounds\background_profile.png" />
+    <None Remove="Fonts\Cambay-Bold.ttf" />
+    <None Remove="Fonts\IntroBlack.ttf" />
+    <None Remove="Fonts\ProximaNovaRegular.ttf" />
+    <None Remove="Images\Icon\calendarBlack.png" />
+    <None Remove="Images\Icon\calendarWhite.png" />
+    <None Remove="Images\Icon\delete.png" />
+    <None Remove="Images\Icon\delete_cross.png" />
+    <None Remove="Images\Icon\edit.png" />
+    <None Remove="Images\Icon\exit.png" />
+    <None Remove="Images\Icon\important.png" />
+    <None Remove="Images\Icon\personBlack.png" />
+    <None Remove="Images\Icon\personWhite.png" />
+    <None Remove="Images\Logo\blue-logo.png" />
+    <None Remove="Images\Logo\white-logo.png" />
+    <None Remove="Images\Portrait\default.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Icon\signofhealth_medical_10742.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalCabinet.Library\MedicalCabinet.Library.csproj" />
+    <ProjectReference Include="..\MedicalCabinet.UI.Helpers\MedicalCabinet.UI.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Backgrounds\background_profile.png" />
+    <Resource Include="Fonts\Cambay-Bold.ttf" />
+    <Resource Include="Fonts\IntroBlack.ttf" />
+    <Resource Include="Fonts\ProximaNovaRegular.ttf" />
+    <Resource Include="Images\Icon\calendarBlack.png" />
+    <Resource Include="Images\Icon\calendarWhite.png" />
+    <Resource Include="Images\Icon\delete.png" />
+    <Resource Include="Images\Icon\delete_cross.png" />
+    <Resource Include="Images\Icon\edit.png" />
+    <Resource Include="Images\Icon\exit.png" />
+    <Resource Include="Images\Icon\important.png" />
+    <Resource Include="Images\Icon\personBlack.png" />
+    <Resource Include="Images\Icon\personWhite.png" />
+    <Resource Include="Images\Logo\blue-logo.png" />
+    <Resource Include="Images\Logo\white-logo.png" />
+    <Resource Include="Images\Portrait\default.png" />
+  </ItemGroup>
+
+</Project>

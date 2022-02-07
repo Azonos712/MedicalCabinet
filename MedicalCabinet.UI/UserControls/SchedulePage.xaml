@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="MedicalCabinet.UI.UserControls.SchedulePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:uc="clr-namespace:MedicalCabinet.UI.UserControls"
+             xmlns:local="clr-namespace:MedicalCabinet.UI.UserControls" 
+             xmlns:libmod="clr-namespace:MedicalCabinet.Library.Model;assembly=MedicalCabinet.Library"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1100">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="36*"></ColumnDefinition>
+            <ColumnDefinition Width="64*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="#FFE2E2E2" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="Расписание приёмов" FontSize="29.5" HorizontalAlignment="Left" Margin="22 22 0 0"></TextBlock>
+                <Viewbox x:Name="ViewBoxCalendar" Stretch="Uniform" Height="325" Margin="0 20 0 0">
+                    <Calendar x:Name="LeftCalendar" FontFamily="Fonts\#ProximaNovaRegular" SelectedDatesChanged="LeftCalendar_SelectedDatesChanged"
+                                  
+                                  CalendarButtonStyle="{StaticResource DefaultCalendarButtonStyle}" 
+                                  CalendarItemStyle="{StaticResource DefaultCalendarItemStyle}" 
+                                  Style="{StaticResource DefaultCalendarStyle}">
+                        <!--CalendarDayButtonStyle="{StaticResource DefaultCalendarDayButtonStyle}"-->
+                        <Calendar.CalendarDayButtonStyle>
+                            <Style TargetType="CalendarDayButton" BasedOn="{StaticResource DefaultCalendarDayButtonStyle}">
+                                <EventSetter Event="Loaded" Handler="CalendarDayButton_Loaded" />
+                            </Style>
+                        </Calendar.CalendarDayButtonStyle>
+                    </Calendar>
+                </Viewbox>
+                <Button x:Name="AddAppointmentBtn" Style="{StaticResource BlueWhiteButtonStyle}" FontSize="18" Width="320" 
+                                Margin="22 45 22 0" Content="Добавить новый приём" Cursor="Hand"></Button>
+                <Button x:Name="AddNoteBtn" Style="{StaticResource WhiteBlueButtonStyle}" FontSize="18" 
+                        BorderThickness="2" BorderBrush="#FF1675E4" Width="320" Margin="22 8 22 0" 
+                        Content="Новая заметка" Cursor="Hand"></Button>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" BorderBrush="#FFE2E2E2" BorderThickness="1">
+            <StackPanel Margin="30 23 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="selectedDate" Style="{StaticResource TextBlockStyle}" Text="24 октября 2020" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" ></TextBlock>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" FontWeight="Normal" Text="Количество приёмов:" FontSize="16" VerticalAlignment="Center" Margin="120 0 0 0"></TextBlock>
+                    <TextBlock x:Name="appointmentCount" Style="{StaticResource TextBlockStyle}" Foreground="#FF1675E4" Text="20" FontSize="16" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                </StackPanel>
+
+                <Border Margin="0 25 0 0" CornerRadius="1" Width="610" Height="520" HorizontalAlignment="Left" BorderBrush="#FFE2E2E2" BorderThickness="1">
+                    <ScrollViewer x:Name="RightScroll" VerticalScrollBarVisibility="Auto" Style="{StaticResource DefaultScrollViewer}">
+                        <ItemsControl x:Name="rightItemsControl" Margin="7 20 7 20">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel x:Name="rightPanel">
+                                    </StackPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Border x:Name="Splitter" BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                                        <uc:AppointmentCard EditButtonClick="AppointmentCard_EditButtonClick" DeleteButtonClick="AppointmentCard_DeleteButtonClick"></uc:AppointmentCard>
+                                    </StackPanel>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                            <Setter Property="Visibility" TargetName="Splitter" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <!--<uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>
+                            <uc:AppointmentCard></uc:AppointmentCard>
+                            <Border BorderThickness="0.5" BorderBrush="Black" Margin="15" CornerRadius="2"/>-->
+
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

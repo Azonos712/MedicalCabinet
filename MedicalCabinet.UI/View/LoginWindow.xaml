@@ -1,0 +1,76 @@
+﻿<Window x:Class="MedicalCabinet.UI.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedicalCabinet.UI.View"
+        xmlns:crossButton="clr-namespace:MedicalCabinet.UI.CustomControls"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyle}" WindowStartupLocation="CenterScreen" Title="MEDDOC">
+    <Border BorderBrush="#FFE2E2E2" BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="BackgroundGrid" Grid.ColumnSpan="2" Background="#59000000" Panel.ZIndex="10" Visibility="Collapsed"/>
+            <Grid x:Name="LeftBlueGrid" Grid.ColumnSpan="2" Width="640.5" HorizontalAlignment="Left" Background="#FF1675E4"></Grid>
+            
+            <crossButton:CrossButton x:Name="CloseBtn" Grid.Column="1" Width="25" Height="25" Margin="596,10,10,679" Cursor="Hand" Click="CloseBtn_Click"/>
+            
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Width="200" Height="200">
+                    <Image x:Name="WhiteLogo" Opacity="1" Source="/Images/Logo/white-logo.png"></Image>
+                    <Image x:Name="BlueLogo" Opacity="0" Source="/Images/Logo/blue-logo.png"></Image>
+                </Grid>
+                <TextBlock x:Name="LogoTextBlock" Style="{StaticResource TextBlockStyle}" FontFamily="\Fonts\#Intro" 
+                           FontSize="47" Foreground="#FFFFFFFF" HorizontalAlignment="Center" Text="MEDDOC"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Margin="10 0 10 30">
+                    <TextBlock x:Name="TopTxtBlock1" Style="{StaticResource TextBlockStyle}" 
+                               Opacity="1" Text="Вход в аккаунт" ></TextBlock>
+                    <TextBlock x:Name="TopTxtBlock2" Style="{StaticResource TextBlockStyle}" 
+                               Opacity="0" Foreground="#FFFFFFFF" Text="Регистрация" ></TextBlock>
+                </Grid>
+                <Grid>
+                    <Grid x:Name="NewLoginGrid" Opacity="0" Margin="10" VerticalAlignment="Bottom" Panel.ZIndex="5">
+                        <TextBox x:Name="txtBoxEmail" Style="{StaticResource TextBoxStyle}" TextChanged="TextChanged1" TabIndex="1"></TextBox>
+                        <TextBlock x:Name="placeHolder1" Style="{StaticResource TextBlockPlaceHolderStyle}" Text="Ваша почта..."></TextBlock>
+                    </Grid>
+                    <Grid Margin="10" VerticalAlignment="Bottom" Panel.ZIndex="6">
+                        <TextBox x:Name="txtBoxLogin" Style="{StaticResource TextBoxStyle}" TextChanged="TextChanged2" TabIndex="2"></TextBox>
+                        <TextBlock x:Name="placeHolder2" Style="{StaticResource TextBlockPlaceHolderStyle}" Text="Ваш логин..."/>
+                    </Grid>
+                </Grid>
+                <Grid>
+                    <Grid Margin="10" VerticalAlignment="Top" Panel.ZIndex="6">
+                        <PasswordBox x:Name="passBox1" Style="{DynamicResource DefaultPasswordBoxStyle}" 
+                                     PasswordChanged="TextChanged3" TabIndex="3"></PasswordBox>
+                        <TextBlock x:Name="placeHolder3" Style="{StaticResource TextBlockPlaceHolderStyle}" 
+                                   Text="Ваш пароль..."></TextBlock>
+                    </Grid>
+                    <Grid x:Name="ConfirmPassGrid" Margin="10" VerticalAlignment="Top" Opacity="0" Panel.ZIndex="5">
+                        <PasswordBox x:Name="passBox2" Style="{DynamicResource DefaultPasswordBoxStyle}"  
+                                     PasswordChanged="TextChanged4" TabIndex="4"></PasswordBox>
+                        <TextBlock x:Name="placeHolder4" Style="{StaticResource TextBlockPlaceHolderStyle}" 
+                                   Text="Подтвердите пароль..."></TextBlock>
+                    </Grid>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                    <TextBlock x:Name="RegistrationTxtBlock" Style="{StaticResource TextBlockStyle}" TextDecorations="Underline" 
+                               Foreground="#FF1675E4" FontSize="20" FontWeight="Normal" Text="Регистрация" Cursor="Hand" 
+                               MouseUp="RegistrationTxtBlock_MouseUp"></TextBlock>
+                    <TextBlock x:Name="ForgetPassTxtBlock" Style="{StaticResource TextBlockStyle}" TextDecorations="Underline" 
+                               Foreground="#FF1675E4" FontSize="20" FontWeight="Normal" Text="Забыли пароль?" Margin="108 0 0 0" Visibility="Collapsed"></TextBlock>
+                </StackPanel>
+                <Button x:Name="EnterButton" Style="{StaticResource BlueWhiteButtonStyle}" Content="Войти" Margin="10 50 10 0" 
+                        Cursor="Hand" TabIndex="5" Click="EnterButton_Click"></Button>
+            </StackPanel>
+
+            <!--<Image Grid.ColumnSpan="5" Grid.RowSpan="5" Source="Mock-up/ListOfPatients.png" Stretch="UniformToFill" Opacity="0.0"></Image>-->
+        </Grid>
+    </Border>
+</Window>

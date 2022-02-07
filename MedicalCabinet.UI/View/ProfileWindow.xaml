@@ -1,0 +1,69 @@
+﻿<Window x:Class="MedicalCabinet.UI.View.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedicalCabinet.UI.View"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyle}" WindowStartupLocation="CenterScreen" Title="MEDDOC">
+    <Window.Background>
+        <ImageBrush ImageSource="/Backgrounds/background_profile.png" TileMode="None" Stretch="Fill"/>
+    </Window.Background>
+    <Border BorderBrush="#FFE2E2E2" BorderThickness="1">
+        <Grid>
+            <Grid x:Name="BlackBackGrid" Visibility="Collapsed" Background="#70000000" 
+                  Grid.RowSpan="10" Grid.ColumnSpan="10" Panel.ZIndex="10"/>
+            <StackPanel Margin="15">
+                <StackPanel Orientation="Horizontal" Margin="40 15 0 0">
+                    <Border Width="210" Height="210" BorderThickness="1.3" BorderBrush="#FFE2E2E2" CornerRadius="300" Cursor="Hand" MouseUp="ImageBorder_MouseUp">
+                        <Border.Background>
+                            <ImageBrush x:Name="PortraitImage" Stretch="UniformToFill" 
+                                        ImageSource="{Binding Portrait, Mode=TwoWay, Converter={StaticResource imageConverter}}"/>
+                        </Border.Background>
+                    </Border>
+                    <StackPanel Margin="15 0 0 0">
+                        <Grid HorizontalAlignment="Left" Margin="5">
+                            <TextBox x:Name="txtBoxLastName" Style="{StaticResource TextBoxStyle}" 
+                                     TextChanged="TextChanged1" Height="40" Width="400" Text="{Binding Path=LastName}"></TextBox>
+                            <TextBlock x:Name="placeHolder1" Style="{StaticResource TextBlockPlaceHolderStyle}" Text="Фамилия"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="5">
+                            <TextBox x:Name="txtBoxFirstName" Style="{StaticResource TextBoxStyle}" 
+                                     TextChanged="TextChanged2" Height="40" Width="400" Text="{Binding Path=FirstName}"></TextBox>
+                            <TextBlock x:Name="placeHolder2" Style="{StaticResource TextBlockPlaceHolderStyle}" Text="Имя"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="5">
+                            <TextBox x:Name="txtBoxMiddleName" Style="{StaticResource TextBoxStyle}" 
+                                     TextChanged="TextChanged3" Height="40" Width="400" Text="{Binding Path=MiddleName}"></TextBox>
+                            <TextBlock x:Name="placeHolder3" Style="{StaticResource TextBlockPlaceHolderStyle}" Text="Отчество"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="5">
+                            <DatePicker x:Name="txtBoxBirthDay" Width="400" Height="40" SelectedDateChanged="TextChanged4"
+                                        SelectedDate="{Binding Path=BirthDay, StringFormat=dd.MM.yyyy}"
+                                        CalendarStyle="{DynamicResource DefaultCalendarStyle}" 
+                                        Style="{DynamicResource DefaultDatePickerStyle}">
+                            </DatePicker>
+                            <TextBlock x:Name="placeHolder4" Style="{StaticResource TextBlockPlaceHolderStyle}" Text="Дата рождения"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="5">
+                            <TextBox x:Name="txtBoxPosition" Style="{StaticResource TextBoxStyle}" 
+                                     TextChanged="TextChanged5" Height="40" Width="400" Text="{Binding Path=Position}"></TextBox>
+                            <TextBlock x:Name="placeHolder5" Style="{StaticResource TextBlockPlaceHolderStyle}" Text="Должность"/>
+                        </Grid>
+                    </StackPanel>
+                    <Button x:Name="SaveDataBtn" Style="{StaticResource WhiteBlueButtonStyle}" Content="Сохранить данные" 
+                            BorderThickness="2" BorderBrush="#FF1675E4" HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Width="300" Height="40" Cursor="Hand" Margin="5" Click="SaveDataBtn_Click"></Button>
+                </StackPanel>
+                <TextBlock Margin="40 20 0 0" Style="{StaticResource TextBlockStyle}" FontSize="28" 
+                           Text="Количество пациентов стоящих на учёте:"></TextBlock>
+                <TextBlock x:Name="PatientCountTxtBlock" Margin="40 10 0 0" Style="{StaticResource TextBlockStyle}" FontSize="90" FontWeight="ExtraBold" 
+                           Foreground="#FF1675E4" Text="37"></TextBlock>
+                <TextBlock x:Name="BackTextBlockBtn" Margin="40 200 0 0" Style="{StaticResource TextBlockStyle}" FontSize="24" 
+                           Width="260" HorizontalAlignment="Left" Foreground="#FF1675E4" Text="Вернуться на главную"
+                           Cursor="Hand" MouseUp="BackTextBlockBtn_MouseUp"></TextBlock>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,33 @@
+﻿<Application x:Class="MedicalCabinet.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MedicalCabinet.UI"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             xmlns:global="clr-namespace"
+             StartupUri="View/LoginWindow.xaml">
+             <!--xmlns:ui="http://schemas.modernwpf.com/2019"-->
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionaries/Buttons.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/Calendars.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/ComboBoxes.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/DataGrids.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/DataPickers.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/Expanders.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/PasswordBoxes.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/RadioButtons.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/Scrolls.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/TextBlocks.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/TextBoxes.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/Windows.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/Colours.xaml"/>
+                <ResourceDictionary Source="ResourceDictionaries/Converters.xaml"/>
+                <!--<ui:ThemeResources />-->
+                <!--<ui:XamlControlsResources />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#FF1675E4"></SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="#FFFFFFFF"></SolidColorBrush>
+    <SolidColorBrush x:Key="ForegroundBlack" Color="#FF000000"></SolidColorBrush>
+    <SolidColorBrush x:Key="ForegroundGray" Color="#FFB0B0B0"></SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundGray" Color="#FFE2E2E2"></SolidColorBrush>
+    <SolidColorBrush x:Key="BorderGray" Color="#FFE2E2E2"></SolidColorBrush>
+    <SolidColorBrush x:Key="MouseOverGray" Color="#FFD4D4D4"></SolidColorBrush>
+    <SolidColorBrush x:Key="ScrollGray" Color="#FFD4D4D4"></SolidColorBrush>
+    <!--TODO Просмотреть старые словари ресурсов, добавить кисти и исправить на DynamicResource-->
+    
+</ResourceDictionary>
